@@ -1,0 +1,23 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99%;
+
+  .app-details {
+    display: flex;
+    align-items: center;
+  }
+  .header-logo {
+    img {
+      height: 35px;
+    }
+  }
+  .view-mode {
+    display: flex;
+  }
+}

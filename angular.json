@@ -24,10 +24,12 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "src/app/styles/themes/custom-theme.scss"
+              },              
               "src/styles.scss"
             ],
             "scripts": []

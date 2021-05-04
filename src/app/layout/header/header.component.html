@@ -1,0 +1,17 @@
+<mat-toolbar color="accent">
+  <div class="header-container">
+    <div class="app-details">
+      <mat-icon>menu</mat-icon>
+      <span >My App</span> 
+    </div>
+    <div class="header-logo">
+      <img src="../../../assets/logo-white.png" alt="logo">
+    </div>
+    <div class="view-mode">  
+      <mat-icon [ngStyle]="{'color' : toggleControl.value ?  '' : 'yellow' }">light_mode</mat-icon>
+      <mat-slide-toggle color='primary' [formControl]="toggleControl"></mat-slide-toggle>
+      <mat-icon [ngStyle]="{'color' : toggleControl.value ? '#30308A' : '' }">dark_mode</mat-icon>
+    </div>
+  </div>
+</mat-toolbar>
+<!-- <span class="spacer"></span> -->
