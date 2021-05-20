@@ -1,5 +1,25 @@
-$dark-primary: mat-palette($mat-green, 500);
-$dark-accent: mat-palette($mat-grey, 800);
+$dark-primary: mat-palette($mat-orange, 500);
+$dark-accent: mat-palette($mat-grey, 900);
 $dark-warn: mat-palette($mat-red);
+$dark-foreground: mat-palette($mat-red);
+$dark-background: mat-palette($mat-orange);
+
+// $dark-theme: (
+//   foreground: $dark-foreground,
+//   background: $dark-background,
+// );
+
+// @function create-my-theme() {
+//   @return (
+//     primary: $dark-primary,
+//     accent: $dark-accent,
+//     warn: $dark-warn,
+//     is-dark: false,
+//     foreground: white,
+//     background: black
+//   );
+// }
 
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// $dark-theme: create-my-theme();

@@ -1,0 +1,91 @@
+.weather {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  form {
+    width: 80%;
+  }
+  .weather-fields {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .action-btns {
+    width: 20%;
+    padding-left: 20px;
+    position: relative;
+
+    .btn-container {
+      position: absolute;
+      top: -20px;
+      left: 0px;
+
+      .action-icon {
+        font-size: 30px;
+        margin-right: 12px;
+      }
+
+      .delete-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.temp-wrapper {
+  display: flex;
+  width: 50%;
+  margin-top: -40px;
+  padding-left: 25px;
+
+  .temp-icon {
+    img {
+      width: 80px;
+    }
+  }
+  .temp-data {
+    padding-top: 22px;
+    .main-temp {
+      display: flex;
+
+      .temp {
+        font-size: 30px;
+        margin: 0 15px 6px 0;
+      }
+      .range-temp {
+        font-size: 12px;
+        padding-top: 3px;
+      }
+    }
+
+    .feels-temp,
+    .description-temp {
+      font-size: 14px;
+    }
+  }
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin: -16px 0 14px -128px;
+}
+
+.separetor {
+}
+
+.mat-form-field {
+  width: 40%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 3px 0 9px 0;
+}
+
+::ng-deep .mat-option,
+::ng-deep .mat-select-value-text {
+  font-family: "Rubik", sans-serif !important;
+  font-size: 18px !important;
+}

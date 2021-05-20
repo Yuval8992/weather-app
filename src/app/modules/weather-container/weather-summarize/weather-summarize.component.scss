@@ -1,0 +1,16 @@
+.container {
+  width: 50%;
+  margin: 15px auto;
+  padding-left: 44px;
+
+  .title {
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 22px;
+  }
+
+  .weatherSummarize {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+}

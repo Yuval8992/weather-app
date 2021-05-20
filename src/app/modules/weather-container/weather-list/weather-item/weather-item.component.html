@@ -1,0 +1,69 @@
+<div class="weather">
+  <form [formGroup]="weather">
+      <div class="weather-fields">
+      <mat-form-field class="field" appearance="outline">
+        <mat-select formControlName="city" placeholder="choose a city" panelClass="select-box" disableOptionCentering="true">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="hasError('city','required')">{{getErrorMessage('required')}}</span>
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="field" appearance="outline">
+        <mat-select formControlName="unit" placeholder="choose a unit" panelClass="select-box" disableOptionCentering="true">
+          <mat-option *ngFor="let unit of units" [value]="unit">
+            {{ unit }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="hasError('unit','required')">required field</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+    
+  <div class="action-btns">
+    <div class="btn-container">
+      <mat-icon  
+        *ngIf="getNumOfWheathers === index"
+        class="action-icon" 
+        color="primary"
+        [ngStyle]="{'opacity' : weather?.valid ? 1 :  0.5, 'cursor': weather?.valid ? 'pointer' : 'not-allowed'}" 
+        (click)="onAddWeather()"
+        matTooltip="Add">
+        add_circle_outline</mat-icon>
+      <mat-icon 
+        *ngIf="getNumOfWheathers !== index" 
+        color="warn"
+        class="action-icon delete-icon" 
+        (click)="onDeleteWeather()"
+        matTooltip="Delete">highlight_off</mat-icon> 
+  </div> 
+
+    </div>
+</div>
+
+  <div *ngIf="weatherData && !isLoading" class="temp-wrapper">
+    <div class="temp-icon">
+      <img [src]='weatherIcon' alt="temp-icon">
+    </div>
+    <div class="temp-data">
+      <div class="main-temp">
+        <div class="temp">{{(weatherData.temp | number : '1.0-0') | temp : weatherData.unit}}</div>
+        <div class="range-temp">
+          <div class="min-temp">{{(weatherData.temp_min | number : '1.0-0') | temp : weatherData.unit}}</div>
+          <div class="max-temp">{{(weatherData.temp_max | number : '1.0-0') | temp : weatherData.unit}}</div>
+        </div>
+      </div>
+      <div class="feels-temp">Feels: {{(weatherData.feels_like | number : '1.0-0') | temp : weatherData.unit}}</div>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="spinner">
+    <mat-spinner [diameter]="60"></mat-spinner>
+  </div>
+  <hr class="separetor">
+
+  
