@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WeatherListService } from '../../../core/services/weather.service'
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../../store/app.reducer';
+import { map } from 'rxjs/operators';
+import { Weather } from 'src/app/shared/models/weather.model';
 
 @Component({
   selector: 'app-weather-list',
@@ -10,27 +14,26 @@ import { WeatherListService } from '../../../core/services/weather.service'
 export class WeatherListComponent implements OnInit {
   weathersForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private weatherListService: WeatherListService) { }
+  constructor(private fb: FormBuilder, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.weathersForm = this.fb.group({
       weathers: this.fb.array([])
     })
-    this.addWeather('', '', 0);
-    this.weatherListService.addWeatherSubject?.subscribe((data) => this.addWeather(data.city, data.unit, data.index))
-    this.weatherListService.deleteWeatherSubject?.subscribe((index) => this.deleteWeather(index))
+
+    this.store.select('weather').pipe(map(weatherState => weatherState.weathers))
+      .subscribe((weathers: Weather[]) => {
+        this.weathersForm.patchValue({ weathers: weathers });
+      })
+    this.addWeather();
   }
 
-  addWeather(city: string, unit: string, index: number) {
+  addWeather() {
     const weatherForm = this.fb.group({
       city: ['', [Validators.required]],
-      unit: ['', [Validators.required]]
+      unit: ['', [Validators.required]],
     });
-
-    console.log(this.weatherListService);
-
-    this.weathers.controls.splice(index + 1, 0, weatherForm);
-    index > 0 ? this.weatherListService.getWeatherData(city, unit) : '';
+    this.weathers.push(weatherForm);
   }
 
   deleteWeather(index: number) {

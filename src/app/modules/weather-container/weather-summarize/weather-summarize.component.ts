@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
+import { Weather } from 'src/app/shared/models/weather.model';
+
 import { WeatherListService } from '../../../core/services/weather.service'
+import * as fromApp from '../../../store/app.reducer';
 
 @Component({
   selector: 'app-weather-summarize',
@@ -7,14 +12,14 @@ import { WeatherListService } from '../../../core/services/weather.service'
   styleUrls: ['./weather-summarize.component.scss']
 })
 export class WeatherSummarizeComponent implements OnInit {
+  weatherData: Weather[];
 
-  constructor(private weatherListService: WeatherListService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
+    this.store.select('weather').pipe(map(weatherState => weatherState.weathers))
+      .subscribe((weathers) => {
+        this.weatherData = weathers;
+      })
   }
-
-  get getWeathersData() {
-    return this.weatherListService.WeathersData;
-  }
-
 }

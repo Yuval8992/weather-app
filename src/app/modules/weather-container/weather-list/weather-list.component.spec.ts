@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { WeatherData } from 'src/app/shared/models/weather-data.model';
+import { Weather } from 'src/app/shared/models/weather.model';
 import { WeatherListService } from '../../../core/services/weather.service'
 import { WeatherListComponent } from './weather-list.component';
 
@@ -10,9 +9,9 @@ describe('WeatherListComponent', () => {
   let fixture: ComponentFixture<WeatherListComponent>;
 
   class WeatherListServiceStub {
-    static getWeatherData(city: string, unit: string): Promise<WeatherData> {
+    static getWeatherData(city: string, unit: string): Promise<Weather> {
       return new Promise((resolve) => {
-        resolve({} as WeatherData)
+        resolve({} as Weather)
       })
     }
   }

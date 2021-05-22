@@ -2,7 +2,12 @@
     <form [formGroup]="weathersForm">
        <div formArrayName="weathers" *ngFor="let weather of weathers.controls; let index = index">
            <div [formGroupName]="index" class="weather-item">
-               <app-weather-item [weather]='weather' [index]='index'></app-weather-item>
+               <app-weather-item 
+                    [weather]='weather' 
+                    [index]='index' 
+                    (onAddWeather)="addWeather()"
+                    (onDeleteWeather)="deleteWeather($event)">
+            </app-weather-item>
            </div>
        </div>
     </form>

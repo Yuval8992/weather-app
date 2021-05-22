@@ -28,18 +28,18 @@
   <div class="action-btns">
     <div class="btn-container">
       <mat-icon  
-        *ngIf="getNumOfWheathers === index"
+        *ngIf="numOfWeathers === index"
         class="action-icon" 
         color="primary"
         [ngStyle]="{'opacity' : weather?.valid ? 1 :  0.5, 'cursor': weather?.valid ? 'pointer' : 'not-allowed'}" 
-        (click)="onAddWeather()"
+        (click)="addWeather()"
         matTooltip="Add">
         add_circle_outline</mat-icon>
       <mat-icon 
-        *ngIf="getNumOfWheathers !== index" 
+        *ngIf="numOfWeathers !== index" 
         color="warn"
         class="action-icon delete-icon" 
-        (click)="onDeleteWeather()"
+        (click)="deleteWeather()"
         matTooltip="Delete">highlight_off</mat-icon> 
   </div> 
 

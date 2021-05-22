@@ -1,10 +1,10 @@
-<div *ngIf="getWeathersData?.length" class="container">
+<div *ngIf="weatherData?.length" class="container">
     <div class="title">
         Weather in selected cities:
     </div>
-    <div *ngFor="let weatherSummarize of getWeathersData; let i = index">
+    <div *ngFor="let weatherSummarize of weatherData; let i = index">
         <div class="weatherSummarize">
-            <div class="city">{{i + 1}}. {{weatherSummarize['city']}}: {{(weatherSummarize['temp'] | number : '1.0-0') | temp : weatherData?.unit}} | {{weatherSummarize['description']}}</div>
+            <div class="city">{{i + 1}}. {{weatherSummarize['city']}}: {{(weatherSummarize['temp'] | number : '1.0-0') | temp : weatherSummarize?.unit}} | {{weatherSummarize['description']}}</div>
         </div>
     </div>
 </div>
